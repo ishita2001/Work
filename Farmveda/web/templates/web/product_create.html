@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block css %}
+
+
+    #as{
+        max-width: 450px;
+        background: #FAFAFA;
+        padding: 30px;
+        margin: 50px auto;
+        box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+        border-radius: 10px;
+        border: 6px solid #305A72;
+    }
+
+    button:hover{
+        transform: scale(1.1);
+        box-shadow: 5px 5px 5px black;
+    }
+
+{% endblock %}
+
+{% block body %}
+
+<ul class="nav navbar-nav ml-auto">
+        <li class="nav-item mr-3 pt-1">
+            <form action="{% url 'web:my_profile' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-light btn-lg">
+                    <span class="fas fa-sign-out-alt"></span> profile
+            </button>
+            </form>
+        </li>
+
+        <li class="nav-item mr-3 pt-1">
+            <form action="{% url 'web:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-light btn-lg">
+                <span class="fas fa-sign-out-alt"></span> Logout
+            </button>
+            </form>
+        </li>
+    
+</ul>
+
+{% endblock %}
+
+{% block div %}
+
+<br><br><br><br>
+<div id="as" class="dipov" align="center">
+    <h2 class="bg-info p-1">
+        Add Details of Your PRODUCT
+    </h2> <br> <br>
+<form action='.' method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-info text-body btn-lg">
+        <span class="fas fa-save"></span> Save
+    </button>
+</div>
+</form>
+
+
+
+
+{% endblock %}

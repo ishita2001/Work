@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+    button:hover{
+        transform: scale(1.1);
+        box-shadow: 5px 5px 5px black;
+    }
+
+{% endblock %}
+
+{% block body %}
+
+<ul class="nav navbar-nav ml-auto">
+        <li class="nav-item mr-3 pt-1">
+            <form action="{% url 'web:my_profile' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-light btn-lg">
+                    <span class="fas fa-sign-out-alt"></span> profile
+            </button>
+            </form>
+        </li>
+
+        <li class="nav-item mr-3 pt-1">
+            <form action="{% url 'web:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-light btn-lg">
+                <span class="fas fa-sign-out-alt"></span> Logout
+            </button>
+            </form>
+        </li>
+</ul>
+
+{% endblock %}
+
+{% block div %}
+<br>
+<br><br><br><br>
+
+<div class="container jumbotron bg-light" style="width:500px">
+<h1 class="bg-info p-1" align="center">Edit Details</h1> <br>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <div align="center">
+        <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
